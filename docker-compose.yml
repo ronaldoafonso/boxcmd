@@ -1,0 +1,14 @@
+---
+version: '3.7'
+
+services:
+  boxcmd:
+    build:
+      context: .
+    image: boxcmd:0.0.1
+    volumes:
+      - type: bind
+        source: .
+        target: /go/src/github.com/ronaldoafonso/boxcmd
+    command: ["/bin/sh", "-c", "while :; do sleep 10; done"]
+...
