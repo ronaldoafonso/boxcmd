@@ -4,9 +4,9 @@ RUN adduser boxcmd
 
 WORKDIR /go/src/github.com/ronaldoafonso/boxcmd
 
-COPY --chown=boxcmd:boxcmd .ssh /home/boxcmd/.ssh
+COPY --chown=boxcmd:boxcmd .ssh/config /home/boxcmd/.ssh/config
 
-COPY --chown=boxcmd:boxcmd main.go .
+COPY --chown=boxcmd:boxcmd *.go ./
 
 USER boxcmd:boxcmd
 

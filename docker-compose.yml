@@ -10,5 +10,8 @@ services:
       - type: bind
         source: .
         target: /go/src/github.com/ronaldoafonso/boxcmd
+      - type: bind
+        source: /tmp/z3nbox-1.0
+        target: /home/boxcmd/.ssh/z3nbox-1.0
     command: ["/bin/sh", "-c", "while :; do sleep 10; done"]
 ...
