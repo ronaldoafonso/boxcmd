@@ -5,11 +5,14 @@ services:
   boxcmd:
     build:
       context: .
-    image: boxcmd:0.0.1
+    image: boxcmd:0.0.2
     volumes:
       - type: bind
         source: .
         target: /go/src/github.com/ronaldoafonso/boxcmd
+      - type: bind
+        source: ./uci
+        target: /home/boxcmd/uci
       - type: bind
         source: /tmp/z3nbox-1.0
         target: /home/boxcmd/.ssh/z3nbox-1.0

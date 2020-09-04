@@ -6,6 +6,8 @@ WORKDIR /go/src/github.com/ronaldoafonso/boxcmd
 
 COPY --chown=boxcmd:boxcmd .ssh/config /home/boxcmd/.ssh/config
 
+COPY --chown=boxcmd:boxcmd ./uci /home/boxcmd/uci
+
 COPY --chown=boxcmd:boxcmd *.go ./
 
 USER boxcmd:boxcmd

@@ -11,7 +11,7 @@ type Command struct {
 }
 
 func (c *Command) Scp() error {
-	script := "./uci/"
+	script := "/home/boxcmd/uci/"
 
 	if c.command == "ssid" {
 		script += "set_ssid.sh"
