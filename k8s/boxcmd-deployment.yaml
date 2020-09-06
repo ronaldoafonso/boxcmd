@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: boxcmd
-          image: ronaldoafonso/boxcmd:0.0.2
+          image: ronaldoafonso/boxcmd:0.0.3
           command: ["/bin/sh"]
           args: ["-c", "while :; do sleep 10; done"]
           volumeMounts:

@@ -5,7 +5,7 @@ services:
   boxcmd:
     build:
       context: .
-    image: boxcmd:0.0.2
+    image: boxcmd:0.0.3
     volumes:
       - type: bind
         source: .
@@ -15,6 +15,6 @@ services:
         target: /home/boxcmd/uci
       - type: bind
         source: /tmp/z3nbox-1.0
-        target: /home/boxcmd/.ssh/z3nbox-1.0
+        target: /home/boxcmd/.ssh/z3n/z3nbox-1.0
     command: ["/bin/sh", "-c", "while :; do sleep 10; done"]
 ...
