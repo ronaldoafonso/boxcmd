@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: boxcmd
+  namespace: boxcmd
+spec:
+  selector:
+    matchLabels:
+      app: boxcmd
+      version: v1.0
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: boxcmd
+        version: v1.0
+    spec:
+      containers:
+        - name: boxcmd
+          image: ronaldoafonso/boxcmd:0.0.2
+          command: ["/bin/sh"]
+          args: ["-c", "while :; do sleep 10; done"]
+          volumeMounts:
+            - name: boxsshkey-volume
+              mountPath: /home/boxcmd/.ssh/z3n
+      volumes:
+        - name: boxsshkey-volume
+          secret:
+            secretName: z3nbox-1.0
