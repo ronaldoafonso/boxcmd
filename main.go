@@ -1,27 +1,23 @@
 package main
 
 import (
+	"github.com/ronaldoafonso/boxcmd/gcommand"
+	"google.golang.org/grpc"
 	"log"
+	"net"
 )
 
 func main() {
-	cmds := []Command{
-		Command{
-			"788a20298f81.z3n.com.br",
-			"ssid",
-			"'z3n'",
-		},
-		Command{
-			"788a20298f81.z3n.com.br",
-			"macs",
-			"11:11:11:11:11:11 22:22:22:22:22:22",
-		},
+	lis, err := net.Listen("tcp", ":50051")
+	if err != nil {
+		log.Fatalf("Error listening: %v.", err)
 	}
 
-	for _, cmd := range cmds {
-		err := cmd.Exec()
-		if err != nil {
-			log.Printf("%v error: %v.", cmd.command, err)
-		}
+	s := grpc.NewServer()
+	gcommand.RegisterRemoteCommandService(s, &server)
+
+	log.Printf("Starting GRPC server!")
+	if err := s.Serve(lis); err != nil {
+		log.Fatalf("Failed to serve: %v.", err)
 	}
 }
