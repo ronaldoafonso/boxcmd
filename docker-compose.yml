@@ -16,5 +16,12 @@ services:
       - type: bind
         source: /tmp/z3nbox-1.0
         target: /home/boxcmd/.ssh/z3n/z3nbox-1.0
+    networks:
+      - boxcmd-external-net
+    ports:
+      - "50051:50051"
     command: ["/bin/sh", "-c", "while :; do sleep 10; done"]
+networks:
+  boxcmd-external-net:
+    name: boxcmd-external-net
 ...

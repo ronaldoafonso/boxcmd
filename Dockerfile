@@ -1,5 +1,7 @@
 FROM golang:1.15.0-buster
 
+EXPOSE 50051
+
 ENV PROTOCFILE protoc-3.13.0-linux-x86_64.zip
 
 ENV PROTOC https://github.com/protocolbuffers/protobuf/releases/download/v3.13.0/${PROTOCFILE}
