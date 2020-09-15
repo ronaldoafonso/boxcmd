@@ -24,9 +24,8 @@ spec:
     spec:
       containers:
         - name: boxcmd
-          image: ronaldoafonso/boxcmd:0.0.3
-          command: ["/bin/sh"]
-          args: ["-c", "while :; do sleep 10; done"]
+          image: ronaldoafonso/boxcmd:0.0.4
+          command: ["boxcmd"]
           volumeMounts:
             - name: boxsshkey-volume
               mountPath: /home/boxcmd/.ssh/z3n
